@@ -16,12 +16,9 @@ class App extends Component {
       fontColor: 'green',
       fontSize: 36,
       fontFamily: 'courier',
-      allowEdit: true,
+      allowEdit: false,
     };
     this.updateColor = this.updateColor.bind(this);
-    this.updateFamily = this.updateFamily.bind(this);
-    this.updatedSize = this.updatedSize.bind(this)
-    
   }
 
   updateColor(val) {
@@ -30,31 +27,18 @@ class App extends Component {
     })
   }
 
-  updateSize(val){
-    this.setState({
-      fontSize:val,
-    })
-  }
-      
+  // updateSize
 
-  updateFamily(val){
-    this.setState({
-      fontFamily:val,
-    })
-  }
+  // updateFamily
 
-  updateEditStatus(val){
-    this.setStatus({
-      allowEdit:val,
-    })
-  }
+  // updateEditStatus
 
   render() {
     return (
       <div>
         <div className="headerBar">
           <EditToggle />
-          <ColorChanger  fontColor={this.state.fontColor} />
+          <ColorChanger allowEdit={this.state.allowEdit} update={this.updateColor} fontColor={this.state.fontColor} />
           <SizeChanger fontSize={this.state.fontSize} />
           <FamilyChanger fontFamily={this.state.fontFamily} />
         </div>
